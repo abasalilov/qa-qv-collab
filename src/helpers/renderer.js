@@ -70,6 +70,19 @@ export default (req, store, context) => {
                 background-color:#FFFFFF
                 }
 
+              .container {
+                position: relative;
+                text-align: center;
+                color: white;
+                border: solid red 1px;
+              }
+
+              .centered {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
               </style>
               <link rel="shortcut icon" href="favicon.ico">
                 ${helmet.title.toString()}

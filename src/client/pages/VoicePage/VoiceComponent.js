@@ -7,7 +7,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Mic from "@material-ui/icons/Mic";
 import MicOff from "@material-ui/icons/MicOff";
 import Typography from "@material-ui/core/Typography";
-import { TranscriberComponent } from "./Transcriber";
 
 const iconStyle = {
   color: "#1260DF !important",
@@ -29,7 +28,8 @@ class Voice extends React.Component {
     this.stopRecording = this.stopRecording.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const test = await this.props.submitTest({ data: "blah blah blah" });
     this.stopRecording();
   }
 
@@ -175,13 +175,6 @@ class Voice extends React.Component {
               <br />
             </ul>
           </div>
-          <div style={{ margin: "5rem" }}>
-            <TranscriberComponent
-              textStart="🎤 Begin Phonetic Transcription"
-              wrapUnknown="<%s>"
-              onTranscription={this.onTranscription.bind(this, "phonetic")}
-            />
-          </div>
         </div>
       </div>
     );
@@ -189,8 +182,11 @@ class Voice extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { result: state.result, medBot: state.medBot };
+  return { result: state.result, voice: state.voice };
 }
 
-const WrappedVoice = SpeechRecognition(Voice);
+const asrOptions = {
+  autoStart: false
+};
+const WrappedVoice = SpeechRecognition(asrOptions)(Voice);
 export const VoiceComponent = connect(mapStateToProps, actions)(WrappedVoice);

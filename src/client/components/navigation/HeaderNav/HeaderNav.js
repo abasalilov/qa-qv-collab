@@ -98,8 +98,8 @@ const getTitle = title => {
   if (title === LOGIN) {
     return "/login";
   }
-  if (title === "PROGRAMS") {
-    return "/programs";
+  if (title === "HOME") {
+    return "/";
   }
   return link;
 };
@@ -161,9 +161,14 @@ class HeaderComponent extends React.Component {
                   justify="center"
                   direction={"row"}
                 >
-                  {externalHeaderLinks.map(title => {
+                  {externalHeaderLinks.map((title, idx) => {
                     return (
-                      <Grid item style={{ textAlign: "center" }} xs={2}>
+                      <Grid
+                        key={idx}
+                        item
+                        style={{ textAlign: "center" }}
+                        xs={2}
+                      >
                         <NavButton
                           key={title}
                           {...this.props}

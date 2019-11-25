@@ -1,6 +1,6 @@
 import React from "react";
 import App from "./App";
-import { HomePage, VoicePage } from "./pages";
+import { HomePage, VoicePage, ParametersPage, ScenesPage } from "./pages";
 
 export default [
   {
@@ -11,7 +11,9 @@ export default [
         path: "/",
         exact: true
       },
-      { ...VoicePage, path: "/VOICE-ACTIVATION", exact: true }
+      { ...VoicePage, path: "/VOICE-ACTIVATION", exact: true },
+      { ...ParametersPage, path: "/LLEAP-PARAMETERS", exact: true },
+      { ...ScenesPage, path: "/SCENES", exact: true }
     ]
   }
 ];

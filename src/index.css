@@ -35,3 +35,17 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

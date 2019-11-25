@@ -12,7 +12,9 @@
     "prod:build-client": "webpack --config webpack.client.js ",
     "dev:build-client": "webpack --config webpack.client.js --watch",
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
-    "postbuild": "node build/bundle.js"
+    "postbuild": "node build/bundle.js",
+    "server-prod-start": "forever ./server/index.js",
+    "server-start": "nodemon server/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -28,9 +30,10 @@
     "amortization": "^1.1.1",
     "axios": "0.16.2",
     "babel-preset-env": "^1.7.0",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
+    "cors": "^2.8.5",
     "currency-formatter": "^1.5.5",
     "d3-axis": "^1.0.12",
     "d3-scale": "^2.2.2",
