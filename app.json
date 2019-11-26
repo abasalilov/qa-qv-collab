@@ -5,6 +5,12 @@
       "script": "npm run postbuild",
       "watch": true,
       "NODE_ENV": "production"
+    },
+    {
+      "name": "qq-apo",
+      "script": "npm run server-start",
+      "watch": true,
+      "NODE_ENV": "production"
     }
   ]
 }
