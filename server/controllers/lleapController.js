@@ -1,9 +1,11 @@
 module.exports = {
   lleapTest: async (req, res) => {
+    console.log("2");
     if (res.err) {
       res.status(501).send(res.err);
     } else {
       const time = new Date();
+      console.log("3");
       res.status(201).send({ received: "yes", time: time.getTime() });
     }
   }

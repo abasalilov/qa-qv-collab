@@ -136,6 +136,7 @@ export const SUBMIT_TEST_PENDING = "SUBMIT_TEST_PENDING";
 export const SUBMIT_TEST_COMPLETE = "SUBMIT_TEST_COMPLETE";
 
 export const submitTest = data => async (dispatch, getState, api) => {
+  console.log("1");
   dispatch({
     type: SUBMIT_TEST_PENDING,
     payload: { status: true }
