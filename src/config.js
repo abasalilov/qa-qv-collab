@@ -1,0 +1,3 @@
+GOOGLE_APPLICATION_CREDENTIALS = "./qa-qv-collab-ef46f9fa6c8e.json";
+
+module.export = GOOGLE_APPLICATION_CREDENTIALS;
