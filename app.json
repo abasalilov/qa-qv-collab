@@ -7,7 +7,7 @@
       "NODE_ENV": "production"
     },
     {
-      "name": "qq-apo",
+      "name": "qq-api",
       "script": "npm run server-start",
       "watch": true,
       "NODE_ENV": "production"
