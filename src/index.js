@@ -31,7 +31,7 @@ const app = express();
 
 app.use(
   "/api",
-  proxy("http://localhost:5000", {
+  proxy("http://157.230.132.129:5000", {
     proxyReqOptDecorator(opts) {
       return opts;
     }
