@@ -129,7 +129,6 @@ class Voice extends React.Component {
 
   beginRecognition() {
     if (this.state.isRecording) {
-      console.log("raw", this.state.rawData);
       console.log("about to turn off");
       this.finishRecognition();
     } else {
@@ -144,8 +143,6 @@ class Voice extends React.Component {
   }
 
   async processRecognition(event) {
-    console.log("processrecog", event.results);
-
     if (!event.results) {
       this.setState({
         recognized: "error",
@@ -181,13 +178,10 @@ class Voice extends React.Component {
   resetTranscript() {
     this.setState({ transcribed: "" });
   }
+
   finishRecognition(event) {
-    console.log("about to finish event");
     this.recognition.onend = this.recognition.onresult = null;
     this.recognition.stop();
-    this.setState({
-      isRecording: false
-    });
   }
 
   render() {
