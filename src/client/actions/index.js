@@ -10,7 +10,7 @@ export const updateActiveUser = username => async (dispatch, getState, api) => {
 
 // note might need to regress to   const res = await api.get("/ade-login");
 // style
-export const ADE_LOGIN_SUBMIT = "ade_login_submit";
+export const QAQV_START_TRANSCRIPTION = "QAQV_START_TRANSCRIPTION";
 export const ADE_LOGIN_MORTGAGE = "ADE_LOGIN_MORTGAGE";
 
 export const adeLoginSubmit = (username, pw) => async (
@@ -24,7 +24,7 @@ export const adeLoginSubmit = (username, pw) => async (
   });
 
   dispatch({
-    type: ADE_LOGIN_SUBMIT,
+    type: QAQV_START_TRANSCRIPTION,
     payload: res
   });
 
@@ -106,21 +106,33 @@ export const resizeEvent = mobile => async (dispatch, getState, api) => {
 export const VOICE_SUBMIT = "VOICE_SUBMIT";
 export const VOICE_SUCCESS = "VOICE_SUCCESS";
 export const VOICE_FAILED = "VOICE_FAILED";
-export const submitContactUsEmail = data => async (dispatch, getState, api) => {
+
+export const submitQuarkReq = (utterance, speech, convid) => async (
+  dispatch,
+  getState,
+  api
+) => {
   dispatch({
     type: VOICE_SUBMIT
   });
-
-  const res = await api.post("http://157.230.132.129:5000/voice", {
+  const data = [
+    { utterance: utterance },
+    { speech: speech },
+    { convid: convid }
+  ];
+  const res = await api.post("http://localhost:5000/voice", {
     data
   });
-  if (res.status !== 201) {
+  console.log("res", res);
+
+  if (res.status === 201) {
     dispatch({
-      type: EMAIL_SUCCESS
+      type: VOICE_SUCCESS,
+      payload: { actions: res.data.actions, fb: res.data.feedback }
     });
   } else {
     dispatch({
-      type: EMAIL_FAILED
+      type: VOICE_FAILED
     });
   }
 };

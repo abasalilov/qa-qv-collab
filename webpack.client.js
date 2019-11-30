@@ -14,7 +14,14 @@ const config = {
     path: path.resolve(__dirname, "public")
   },
 
-  mode: "development"
+  mode: "development",
+  node: {
+    child_process: "empty",
+    fs: "empty",
+    crypto: "empty",
+    net: "empty",
+    tls: "empty"
+  }
 };
 
 module.exports = merge(baseConfig, config);

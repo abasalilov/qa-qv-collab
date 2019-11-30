@@ -7,7 +7,13 @@ import {
 } from "../actions";
 
 export default function(
-  state = { pending: false, result: false, query: "" },
+  state = {
+    pending: false,
+    result: false,
+    query: "",
+    feedback: [],
+    actions: []
+  },
   action
 ) {
   switch (action.type) {
@@ -18,7 +24,9 @@ export default function(
 
     case VOICE_SUCCESS:
       const voiceSuccessState = Object.assign({}, state);
-      voiceSuccessState.result = action.payload;
+      console.log("action", action);
+      voiceSuccessState.feedback = action.payload.fb;
+      voiceSuccessState.actions = action.payload.actions;
       return voiceSuccessState;
 
     case VOICE_FAILED:
@@ -32,8 +40,6 @@ export default function(
       return submitTestStartState;
 
     case SUBMIT_TEST_COMPLETE:
-      console.log("successaction", action);
-
       const submitTestEndState = Object.assign({}, state);
       submitTestEndState.result = action.payload;
       return submitTestEndState;

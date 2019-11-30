@@ -1,3 +1,11 @@
+const axios = require("axios");
+
+const quarkReq = axios.create({
+  baseURL: "https://test.quark.ai",
+  timeout: 10000,
+  headers: { content_type: "application/json" }
+});
+
 module.exports = {
   lleapTest: async (req, res) => {
     console.log("2");
@@ -7,6 +15,27 @@ module.exports = {
       const time = new Date();
       console.log("3");
       res.status(201).send({ received: "yes", time: time.getTime() });
+    }
+  },
+  voice: async (req, res) => {
+    const d = req.body.data;
+    const utterance = d[0].utterance;
+    const speech = d[0].speech;
+    const convid = d[0].convid;
+    if (res.err) {
+      res.status(501).send(res.err);
+    } else {
+      // content_type application/json
+      const data = await quarkReq.post("dialogapi/getResponse", {
+        utterance,
+        speech,
+        convid
+      });
+      const { feedback, actions } = data.data;
+      console.log("feedback", feedback);
+      console.log("actions", actions);
+
+      res.status(201).send({ actions, feedback });
     }
   }
 };

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  </head>
+  <body>
+    <voice-button
+      id="voice-button"
+      cloud-speech-api-key="ef46f9fa6c8e1b554ca4588b3798545f6932f3ca"
+      autodetect
+    ></voice-button>
+
+    <script type="module" src="./node_modules/obvi-component/voice-button.js">
+
+      var voiceEl = document.querySelector("voice-button"),
+        transcriptionEl = document.getElementById("transcription");
+
+      // can check the supported flag, and do something if it's disabled / not supported
+      console.log("does this browser support WebRTC?", voiceEl.supported);
+
+      voiceEl.addEventListener("mousedown", function(event) {
+        transcriptionEl.innerHTML = "";
+      });
+
+      var transcription = "";
+      voiceEl.addEventListener("onSpeech", function(event) {
+        transcription = event.detail.speechResult;
+        transcriptionEl.innerHTML = transcription;
+        console.log("Speech response: ", event.detail.speechResult);
+        transcriptionEl.classList.add("interim");
+        if (event.detail.isFinal) {
+          transcriptionEl.classList.remove("interim");
+        }
+      });
+
+      voiceEl.addEventListener("onStateChange", function(event) {
+        console.log("state:", event.detail.newValue);
+      });
+    </script>
+  </body>
+</html>
