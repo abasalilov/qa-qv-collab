@@ -120,7 +120,7 @@ export const submitQuarkReq = (utterance, speech, convid) => async (
     { speech: speech },
     { convid: convid }
   ];
-  const res = await api.post("http://localhost:5000/voice", {
+  const res = await api.post("http://127.0.0.1:5000/:5000/voice", {
     data
   });
   console.log("res", res);
