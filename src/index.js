@@ -6,6 +6,8 @@ import Routes from "./client/Routes";
 import renderer from "./helpers/renderer";
 import createStore from "./helpers/createStore";
 import cluster from "cluster";
+const https = require("https");
+const fs = require("fs");
 
 global.navigator = { userAgent: "all" };
 
@@ -67,7 +69,13 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+const options = {
+  key: fs.readFileSync("../293356200.cer"),
+  cert: fs.readFileSync("../path/to/cert"),
+  ca: [fs.readFileSync("path/toCert/file")]
+};
+
+https.createServer(options, app).listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
   // console.log("Worker %d running!", cluster.worker.id);
 });
