@@ -10,7 +10,7 @@ const styles = {
     color: "#000",
     paddingTop: "2rem"
   },
-  section: { marginTop: "1rem" },
+  section: { marginTop: "1rem", minHeight: "60rem" },
   links: { display: "flex", justifyContent: "center", margin: "2rem 1rem" }
 };
 

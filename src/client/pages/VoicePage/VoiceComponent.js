@@ -187,8 +187,6 @@ class Voice extends React.Component {
   render() {
     const { isRecording, compatible } = this.state;
     const { feedback, actions = [] } = this.props.voice;
-    console.log("feedback", feedback);
-    console.log("actions", actions);
     const hasFB = feedback.utterance && feedback.utterance.length > 0;
     const hasActions = actions.length > 0;
 
@@ -202,14 +200,14 @@ class Voice extends React.Component {
     return (
       <div
         style={{
-          marginTop: "8rem",
           display: "flex",
           justifyContent: "center"
         }}
       >
         <div
           style={{
-            width: "60rem"
+            width: "60rem",
+            marginTop: "8rem"
           }}
         >
           <br />
