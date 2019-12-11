@@ -18,6 +18,7 @@ module.exports = {
     }
   },
   voice: async (req, res) => {
+    console.log("here yo", req);
     const d = req.body.data;
     const utterance = d[0].utterance;
     const speech = d[0].speech;
@@ -31,6 +32,7 @@ module.exports = {
         speech,
         convid
       });
+      console.log("data", data);
       const { feedback, actions } = data.data;
       console.log("feedback", feedback);
       console.log("actions", actions);

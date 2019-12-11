@@ -358,8 +358,8 @@ function formatRawData(data) {
     const keys2 = Object.keys(data[k]);
     keys2.map(e => {
       const { confidence, transcript } = data[k][e];
-      console.log("confidence", confidence, typeof confidence);
-      console.log("transcript", transcript, typeof transcript);
+      console.log("confidence", confidence);
+      console.log("transcript", transcript);
       base.push({ confidence: confidence.toString(), transcript });
     });
   });
