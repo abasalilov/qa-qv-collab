@@ -41,3 +41,21 @@ server {
   }
 
 } -->
+
+
+<!-- Here's the info about accessing the Dialog Interpreter API:
+
+To whitelist your current IP address:
+Go to: https://app.quark.ai/whatsmyip
+user/pass:  aleks/quantum
+click "Add Me"
+
+Once whitelisted, you can access the API endpoint on our test server:
+https://test.quark.ai/dialogapi/getResponse
+
+The API doc shared earlier is up to date:
+https://docs.google.com/document/d/1KSlUcycVjEHpGCAZ28klDacXv4GNTXBDDM063XolK4o/edit#
+
+We will go over it in our meeting tomorrow but please feel free to explore beforehand.
+
+Cheers, -->
